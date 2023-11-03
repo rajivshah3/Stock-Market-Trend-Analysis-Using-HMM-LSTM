@@ -20,28 +20,28 @@ def load_multi_factor_single_score():
 def form_diff_type():
     # Returns a general recorder of various categories of polyphonic words, list type, containing a list with the number of categories, each list is the name of the category
     # Quality factors, describing indicators such as assets and liabilities, turnover, operations, profitability, costs and expenses, etc.
-    type_zhiliang = ['AccountsPayablesTDays', 'AccountsPayablesTRate', 'AccountsPayablesTRate', 'ARTDays', 'ARTDays', 'ARTDays', 'BLEV', 'BondsPayableToAsset', 'BondsPayableToAsset', 'CashRateOfSales', 'CashToCurrentLiability', 'CurrentAssetsRatio', 'CurrentRatio', 'DebtEquityRatio', 'DebtEquityRatio', 'DebtsAssetRatio', 'EBITToTOR', 'EquityFixedAssetRatio', 'EquityToAsset', 'EquityTRate', 'FinancialExpenseRate', 'FixAssetRatio', 'FixedAssetsTRate', 'GrossIncomeRatio', 'IntangibleAssetRatio', 'InventoryTDays', 'InventoryTRate', 'LongDebtToAsset', 'LongDebtToWorkingCapital', 'LongTermDebtToAsset', 'MLEV', 'NetProfitRatio', 'NOCFToOperatingNI', 'NonCurrentAssetsRatio', 'NPToTOR', 'OperatingExpenseRate', 'OperatingProfitRatio', 'OperatingProfitToTOR', 'OperCashInToCurrentLiability', 'QuickRatio', 'ROA', 'ROA5', 'ROE', 'ROE5', 'SalesCostRatio', 'SaleServiceCashToOR', 'TaxRatio', 'TotalAssetsTRate', 'TotalProfitCostRatio', 'CFO2EV', 'ACCA', 'DEGM']
+    type_quality = ['AccountsPayablesTDays', 'AccountsPayablesTRate', 'AccountsPayablesTRate', 'ARTDays', 'ARTDays', 'ARTDays', 'BLEV', 'BondsPayableToAsset', 'BondsPayableToAsset', 'CashRateOfSales', 'CashToCurrentLiability', 'CurrentAssetsRatio', 'CurrentRatio', 'DebtEquityRatio', 'DebtEquityRatio', 'DebtsAssetRatio', 'EBITToTOR', 'EquityFixedAssetRatio', 'EquityToAsset', 'EquityTRate', 'FinancialExpenseRate', 'FixAssetRatio', 'FixedAssetsTRate', 'GrossIncomeRatio', 'IntangibleAssetRatio', 'InventoryTDays', 'InventoryTRate', 'LongDebtToAsset', 'LongDebtToWorkingCapital', 'LongTermDebtToAsset', 'MLEV', 'NetProfitRatio', 'NOCFToOperatingNI', 'NonCurrentAssetsRatio', 'NPToTOR', 'OperatingExpenseRate', 'OperatingProfitRatio', 'OperatingProfitToTOR', 'OperCashInToCurrentLiability', 'QuickRatio', 'ROA', 'ROA5', 'ROE', 'ROE5', 'SalesCostRatio', 'SaleServiceCashToOR', 'TaxRatio', 'TotalAssetsTRate', 'TotalProfitCostRatio', 'CFO2EV', 'ACCA', 'DEGM']
     # Describe benefits and risks
-    type_shouyifengxian = ['CMRA', 'DDNBT', 'DDNCR', 'DDNSR', 'DVRAT', 'HBETA', 'HSIGMA', 'TOBT', 'Skewness', 'BackwardADJ']
+    type_return_risk = ['CMRA', 'DDNBT', 'DDNCR', 'DDNSR', 'DVRAT', 'HBETA', 'HSIGMA', 'TOBT', 'Skewness', 'BackwardADJ']
     # Description Market capitalization Price earnings Price net
-    type_jiazhi = ['CTOP', 'CTP5', 'ETOP', 'ETP5', 'LCAP', 'LFLO', 'PB', 'PCF', 'PE', 'PS', 'FY12P', 'SFY12P', 'TA2EV', 'ASSI']
+    type_value = ['CTOP', 'CTP5', 'ETOP', 'ETP5', 'LCAP', 'LFLO', 'PB', 'PCF', 'PE', 'PS', 'FY12P', 'SFY12P', 'TA2EV', 'ASSI']
     # Emotional category, describing psychology, turnover rate, dynamic buying and selling, trading volume, popularity, willingness, market trend
-    type_qingxu = ['DAVOL10', 'DAVOL20', 'DAVOL5', 'MAWVAD', 'PSY', 'RSI', 'VOL10', 'VOL120', 'VOL20', 'VOL240', 'VOL5', 'VOL60', 'WVAD', 'ADTM', 'ATR14', 'QTR6', 'SBM', 'STM', 'OBV', 'OBV6', 'TVMA20', 'TVMA6', 'TVSTD20', 'TVSTD6', 'VDEA', 'VDIFF', 'VEMA10', 'WEMA12', 'VEMA26', 'VEMA5', 'VMACD', 'VOSC', 'VR', 'VROC12', 'VROC6', 'VSTD10', 'VSTD20', 'ACD6', 'ACD20', 'AR', 'BR', 'ARBR', 'NVI', 'PVI', 'JDQS20', 'KlingerOscillator', 'MoneyFlow20', 'Volatility']
+    type_mood = ['DAVOL10', 'DAVOL20', 'DAVOL5', 'MAWVAD', 'PSY', 'RSI', 'VOL10', 'VOL120', 'VOL20', 'VOL240', 'VOL5', 'VOL60', 'WVAD', 'ADTM', 'ATR14', 'QTR6', 'SBM', 'STM', 'OBV', 'OBV6', 'TVMA20', 'TVMA6', 'TVSTD20', 'TVSTD6', 'VDEA', 'VDIFF', 'VEMA10', 'WEMA12', 'VEMA26', 'VEMA5', 'VMACD', 'VOSC', 'VR', 'VROC12', 'VROC6', 'VSTD10', 'VSTD20', 'ACD6', 'ACD20', 'AR', 'BR', 'ARBR', 'NVI', 'PVI', 'JDQS20', 'KlingerOscillator', 'MoneyFlow20', 'Volatility']
     # Technical indicators, average moving line, calculation period, dynamic movement, difference
-    type_zhibiao = ['MassIndex', 'SwingIndex', 'minusDI', 'plusDI', 'ChaikinVolatility', 'ChaikinOscillator', 'DownRVI', 'BollUp', 'BollDown', 'DHILO', 'EMA10', 'EMA120', 'EMA20', 'EMA5', 'EMA60', 'EA10', 'EA120', 'EA20', 'EA5', 'EA60', 'MFI', 'ILLIQUIDITY', 'MACD', 'KDJ_K', 'KDJ_D', 'KDJ_J', 'UpRVI', 'RVI', 'DBCD', 'ASI', 'EMV12', 'EMV6', 'ADX', 'ADXR', 'MTM', 'MTMMA', 'UOS', 'EMA12', 'EMA26', 'BBI', 'TEMA10', 'Ulcer10', 'Hurst', 'Ulcer5', 'TEMA5', 'CR20', 'Elder', 'DilutedEPS', 'EPS']
+    type_index = ['MassIndex', 'SwingIndex', 'minusDI', 'plusDI', 'ChaikinVolatility', 'ChaikinOscillator', 'DownRVI', 'BollUp', 'BollDown', 'DHILO', 'EMA10', 'EMA120', 'EMA20', 'EMA5', 'EMA60', 'EA10', 'EA120', 'EA20', 'EA5', 'EA60', 'MFI', 'ILLIQUIDITY', 'MACD', 'KDJ_K', 'KDJ_D', 'KDJ_J', 'UpRVI', 'RVI', 'DBCD', 'ASI', 'EMV12', 'EMV6', 'ADX', 'ADXR', 'MTM', 'MTMMA', 'UOS', 'EMA12', 'EMA26', 'BBI', 'TEMA10', 'Ulcer10', 'Hurst', 'Ulcer5', 'TEMA5', 'CR20', 'Elder', 'DilutedEPS', 'EPS']
     # Momentum factors, describing average movement, smooth curves, returns, growth rates, and future trend predictions
-    type_dongliang = ['REVS10', 'REVS10', 'REVS5', 'RSTR12', 'RSTR24', 'DAREC', 'GREC', 'DAREV', 'GREV', 'DASREV', 'GSREV', 'EARNMOM', 'FiftyTwoWeekHigh', 'BIAS10', 'BIAS20', 'BIAS5', 'BIAS60', 'CCI10''CCI20', 'CCI5', 'CCI88', 'ROC6', 'ROC20', 'SRMI', 'ChandeSD', 'ChandeSU', 'CMO', 'ARC', 'AD', 'AD20', 'AD6', 'CoppockCurve', 'Aroon', 'AroonDown', 'AroonUp', 'DEA', 'DIFF', 'DDI', 'DIZ', 'DIF', 'PVT', 'PCT6', 'PVT12', 'TRIX5', 'TRIX10', 'MA10RegressCoeff12', 'MA10RegressCoeff6', 'PLRC6', 'PLRC12', 'APBMA', 'BBIC', 'MA10Close', 'BearPower', 'RC12', 'RC24']
+    type_momentum = ['REVS10', 'REVS10', 'REVS5', 'RSTR12', 'RSTR24', 'DAREC', 'GREC', 'DAREV', 'GREV', 'DASREV', 'GSREV', 'EARNMOM', 'FiftyTwoWeekHigh', 'BIAS10', 'BIAS20', 'BIAS5', 'BIAS60', 'CCI10''CCI20', 'CCI5', 'CCI88', 'ROC6', 'ROC20', 'SRMI', 'ChandeSD', 'ChandeSU', 'CMO', 'ARC', 'AD', 'AD20', 'AD6', 'CoppockCurve', 'Aroon', 'AroonDown', 'AroonUp', 'DEA', 'DIFF', 'DDI', 'DIZ', 'DIF', 'PVT', 'PCT6', 'PVT12', 'TRIX5', 'TRIX10', 'MA10RegressCoeff12', 'MA10RegressCoeff6', 'PLRC6', 'PLRC12', 'APBMA', 'BBIC', 'MA10Close', 'BearPower', 'RC12', 'RC24']
     # Growth category, calculate growth rate
-    type_zengzhang = ['EGRO', 'FinancingCashGrowRate', 'InvestCashGrowRate', 'NetAssetGrowRate', 'NetProfitGrowRate', 'NPParentCompanyGrowRate', 'OperatingProfitGrowRate', 'OperatingRevenueGrowRate', 'OperCashGrowRate', 'SUE', 'TotalAssetGrowRate', 'TotalProfitGrowRate', 'REC', 'FEARNG', 'FSALESG', 'SUOI']
+    type_growth = ['EGRO', 'FinancingCashGrowRate', 'InvestCashGrowRate', 'NetAssetGrowRate', 'NetProfitGrowRate', 'NPParentCompanyGrowRate', 'OperatingProfitGrowRate', 'OperatingRevenueGrowRate', 'OperCashGrowRate', 'SUE', 'TotalAssetGrowRate', 'TotalProfitGrowRate', 'REC', 'FEARNG', 'FSALESG', 'SUOI']
     
     temp = list()
-    temp.append(type_zhiliang)
-    temp.append(type_shouyifengxian)
-    temp.append(type_jiazhi)
-    temp.append(type_qingxu)
-    temp.append(type_zhibiao)
-    temp.append(type_dongliang)
-    temp.append(type_zengzhang)
+    temp.append(type_quality)
+    temp.append(type_return_risk)
+    temp.append(type_value)
+    temp.append(type_mood)
+    temp.append(type_index)
+    temp.append(type_momentum)
+    temp.append(type_growth)
 
     return temp
 
