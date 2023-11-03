@@ -75,13 +75,13 @@ def solve1(dataset, lengths, feature_col, feature_list):
     # According to the sample size of the dataset, the same sample size and the same sorting result are formed, but some of them may not be usable.
     # So at the same time, an allow_flag is returned that records whether the data has been processed.
     # input:
-    # dataset
-    # lengths
-    # feature_col: the corresponding column name of the dataset
-    # feature_list: the name of the feature that needs to be processed
+    #   dataset
+    #   lengths
+    #   feature_col: the corresponding column name of the dataset
+    #   feature_list: the name of the feature that needs to be processed
     # output:
-    # result: processed data
-    # allow_flag: records whether the data can be used
+    #   result: processed data
+    #   allow_flag: records whether the data can be used
 
     result = np.zeros((dataset.shape[0], len(feature_list)))
     allow_flag = np.zeros(len(dataset))
@@ -116,13 +116,13 @@ def solve2(dataset, feature_col, feature_list):
     # According to the sample size of the dataset, the same sample size and the same sorting result are formed, but some of them may not be usable.
     # So at the same time, an allow_flag is returned that records whether the data has been processed.
     # input:
-    # dataset
-    # lengths
-    # feature_col: the corresponding column name of the dataset
-    # feature_list: the name of the feature that needs to be processed
+    #   dataset
+    #   lengths
+    #   feature_col: the corresponding column name of the dataset
+    #   feature_list: the name of the feature that needs to be processed
     # output:
-    # result: processed data
-    # allow_flag: records whether the data can be used
+    #   result: processed data
+    #   allow_flag: records whether the data can be used
 
     result = np.ones((dataset.shape[0], len(feature_list)))
 
@@ -138,13 +138,13 @@ def solve_on_raw_data(dataset, lengths, feature_col, feature_list):
     # According to the sample size of the dataset, the same sample size and the same sorting result are formed, but some of them may not be usable.
     # So at the same time, an allow_flag is returned that records whether the data has been processed.
     # input:
-    # dataset
-    # lengths
-    # feature_col: the corresponding column name of the dataset
-    # feature_list: the name of the feature that needs to be processed
+    #   dataset
+    #   lengths
+    #   feature_col: the corresponding column name of the dataset
+    #   feature_list: the name of the feature that needs to be processed
     # output:
-    # result: processed data
-    # allow_flag: records whether the data can be used
+    #   result: processed data
+    #   allow_flag: records whether the data can be used
 
     result1, allow_flag1 = solve1(dataset, lengths, feature_col, feature_list)
     result2, allow_flag2 = solve2(dataset, feature_col, feature_list)
