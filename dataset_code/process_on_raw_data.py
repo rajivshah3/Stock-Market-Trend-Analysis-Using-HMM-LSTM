@@ -134,7 +134,7 @@ def form_label(df, threshold_type='ratio', threshold=0.05, T=5):
     #   df: dataframe
     #   threshold_type: 'ratio' or 'specific'
     #   threshold: value
-    #   T: length of triple bars
+    #   T: length of triple barriers
     # output:
     #   label: array, (df.shape[0], )
     #   The output results are 0, -1, 1, -2, where -2 indicates that the length is not enough
@@ -345,7 +345,7 @@ def form_raw_dataset(feature_col, label_length, intID_select_list=None, verbose=
     # Among them, X has been processed and does not contain nan. After interpolation, the singular value of 0 becomes 0.1
     # input:
     #   feature_col: column name of the data to be processed
-    #   label_length: the time length of triple bars
+    #   label_length: the time length of triple barriers
     #   intID_select_list: list, select the int code of the stock to generate the sample
     #   verbose: whether to output printing information
     # output:
