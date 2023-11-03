@@ -5,8 +5,7 @@
 
 import numpy as np
 from keras.models import Sequential
-from keras.layers import Dense, LSTM, Dropout
-from keras.layers.advanced_activations import LeakyReLU
+from keras.layers import Dense, LSTM, Dropout, LeakyReLU
 from sklearn.preprocessing import MinMaxScaler
 from keras.callbacks import EarlyStopping
 from sklearn.preprocessing import LabelBinarizer
