@@ -1,11 +1,11 @@
 """
-    得到一个因子一个分数的记录列表
+    Get a list of records with one factor and one score
 """
 
 import pickle
 import numpy as np
 from dataset_code.process_on_raw_data import form_raw_dataset, df_col_quchong
-from dataset_code.HMM_duoyinzi import solve2, form_model_dataset, form_model
+from dataset_code.HMM_multi_factor import solve2, form_model_dataset, form_model
 from public_tool.evaluate_plot import evaluate_plot
 import warnings
 warnings.filterwarnings("ignore")
@@ -39,6 +39,6 @@ if __name__ == '__main__':
 
         print('all:%s, now:%s, ' % (len(feature_list), i + 1) + now_feature[0] + ': score:%s' % score)
 
-        pickle.dump([score_record, feature_list], open('save/duoyinzi_solve2_score.pkl', 'wb'))
+        pickle.dump([score_record, feature_list], open('save/multi_factor_solve2_score.pkl', 'wb'))
 
-    pickle.dump([score_record, feature_list], open('save/duoyinzi_solve2_score.pkl', 'wb'))
+    pickle.dump([score_record, feature_list], open('save/multi_factor_solve2_score.pkl', 'wb'))

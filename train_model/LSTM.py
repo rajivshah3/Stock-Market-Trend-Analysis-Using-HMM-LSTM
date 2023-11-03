@@ -20,15 +20,15 @@ import pickle
 
 
 def form_LSTM_dataset(X, y, lengths, T):
-    # 形成LSTM专用的数据类型
+    # Form a data type specific to LSTM
     # input:
-    #     X
-    #     y
-    #     lengths
-    #     T: 往前使用的数据的步长
+    #   X
+    #   y
+    #   lengths
+    #   T: step size of data used forward
     # output:
-    #     result_X: array (n_sample, T, n_features)
-    #     result_y: array (n_sample, )
+    #   result_X: array (n_sample, T, n_features)
+    #   result_y: array (n_sample, )
 
     result_X = []
     result_y = []

@@ -2,7 +2,7 @@ import random
 
 
 def random_cut(X, y, k_fold=5):
-    # 随机切片，用于CV
+    # Random slicing, used for CV
     # output:
     #     X_train, y_train, X_valid, y_valid
 

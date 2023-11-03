@@ -3,7 +3,7 @@ import numpy as np
 
 
 def combine_allow_flag(allow_flag1, allow_flag2):
-    # 将两个allow_flag合并，即同时为1才为1
+    # Combine the two allow flags, that is, they must be 1 only if they are 1 at the same time.
 
     if not len(allow_flag1) == len(allow_flag2):
         sys.exit('length of two allow_flag is not equal')
