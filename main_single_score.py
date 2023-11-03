@@ -5,7 +5,7 @@
 import pickle
 import numpy as np
 from dataset_code.process_on_raw_data import form_raw_dataset, df_col_quchong
-from dataset_code.HMM_duoyinzi import solve2, form_model_dataset, form_model
+from dataset_code.HMM_multi_factor import solve2, form_model_dataset, form_model
 from public_tool.evaluate_plot import evaluate_plot
 import warnings
 warnings.filterwarnings("ignore")

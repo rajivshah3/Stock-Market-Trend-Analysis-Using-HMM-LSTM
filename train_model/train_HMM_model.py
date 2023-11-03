@@ -4,7 +4,7 @@ from public_tool.solve_on_outlier import solve_on_outlier
 from train_model.GMM_HMM import GMM_HMM
 from train_model.XGB_HMM import XGB_HMM
 import pickle
-from dataset_code import HMM_duoyinzi, HMM_hangqing
+from dataset_code import HMM_market_data, HMM_multi_factor
 import os
 
 
@@ -16,7 +16,7 @@ def train_HMM_model(n_states):
     if not (os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_GMM_HMM_model.pkl') and os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_XGB_HMM_model.pkl')):
         feature_col = ['preClosePrice', 'openPrice', 'closePrice', 'turnoverVol', 'highestPrice', 'lowestPrice']
         dataset, label, lengths, col_nan_record = form_raw_dataset(feature_col, label_length=5)
-        solved_dataset, allow_flag = HMM_hangqing.solve_on_raw_data(dataset, lengths, feature_col)
+        solved_dataset, allow_flag = HMM_market_data.solve_on_raw_data(dataset, lengths, feature_col)
         X_train, y_train, lengths_train = form_model_dataset(solved_dataset, label, allow_flag, lengths)
         X_train = solve_on_outlier(X_train, lengths_train)
 
@@ -33,8 +33,8 @@ def train_HMM_model(n_states):
     # 2 duoyinzi
     print('training duoyinzi...')
     if not (os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/duoyinzi_GMM_HMM_model.pkl') and os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/duoyinzi_XGB_HMM_model.pkl')):
-        score, feature_name = HMM_duoyinzi.load_duoyinzi_single_score()
-        feature_col_duoyinzi = HMM_duoyinzi.type_filter(score, feature_name, 0.1)  # there are 7 kinds of duoyinzi
+        score, feature_name = HMM_multi_factor.load_duoyinzi_single_score()
+        feature_col_duoyinzi = HMM_multi_factor.type_filter(score, feature_name, 0.1)  # there are 7 kinds of duoyinzi
         GMM_model_list = []
         XGB_model_list = []
         for i in range(len(feature_col_duoyinzi)):
@@ -43,7 +43,7 @@ def train_HMM_model(n_states):
             dataset, label, lengths, col_nan_record = form_raw_dataset(feature_col, label_length=5)
             print(sum(lengths))
             print(dataset.shape[0])
-            solved_dataset, allow_flag = HMM_duoyinzi.solve_on_raw_data(dataset, lengths, feature_col, feature_col)
+            solved_dataset, allow_flag = HMM_multi_factor.solve_on_raw_data(dataset, lengths, feature_col, feature_col)
             X_train, label_train, lengths_train = form_model_dataset(solved_dataset, label, allow_flag, lengths)
             pickle.dump([X_train, lengths_train], open('C:/Users/Administrator/Desktop/HMM_program/save/temp.pkl', 'wb'))
             X_train = solve_on_outlier(X_train, lengths_train)
