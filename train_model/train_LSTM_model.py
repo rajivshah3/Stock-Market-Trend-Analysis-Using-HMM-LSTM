@@ -12,17 +12,17 @@ def train_LSTM_model():
 
     # generate the dataset
 
-    feature_col_hangqing = ['preClosePrice', 'openPrice', 'closePrice', 'turnoverVol', 'highestPrice', 'lowestPrice']
+    feature_col_market_data = ['preClosePrice', 'openPrice', 'closePrice', 'turnoverVol', 'highestPrice', 'lowestPrice']
     score, feature_name = HMM_multi_factor.load_multi_factor_single_score()
     feature_col_multi_factor = HMM_multi_factor.type_filter(score, feature_name, 0.1)
-    feature_col = feature_col_hangqing
+    feature_col = feature_col_market_data
     _ = [[feature_col.append(j) for j in i] for i in feature_col_multi_factor]
     dataset, label, lengths, col_nan_record = form_raw_dataset(feature_col, 5)
 
     # 1 by GMM_HMM
-    # 1.1 hangqing
+    # 1.1 market data
     solved_dataset1, allow_flag1 = HMM_market_data.solve_on_raw_data(dataset, lengths, feature_col)
-    model = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_GMM_HMM_model.pkl', 'rb'))
+    model = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/market_data_GMM_HMM_model.pkl', 'rb'))
     pred_proba1 = pred_proba_GMM(model, solved_dataset1, allow_flag1, lengths)
 
     # 1.2 multi factor
@@ -43,9 +43,9 @@ def train_LSTM_model():
     self_LSTM(final_X, final_y, final_lengths, 'GMM_HMM_LSTM')
 
     # 2 by XGB_HMM
-    # 2.1 hangqing
+    # 2.1 market data
     solved_dataset1, allow_flag1 = HMM_market_data.solve_on_raw_data(dataset, lengths, feature_col)
-    temp = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_XGB_HMM_model.pkl', 'rb'))
+    temp = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/market_data_XGB_HMM_model.pkl', 'rb'))
     A, model, pi = temp[0], temp[1], temp[2]
     pred_proba1 = pred_proba_XGB(A, model, pi, solved_dataset1, allow_flag1, lengths)
 

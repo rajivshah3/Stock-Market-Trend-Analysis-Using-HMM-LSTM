@@ -8,11 +8,11 @@ import numpy as np
 import pickle
 
 # Import market data
-file_path = 'C:/Users/Administrator/Desktop/program/data/hangqing/'
+file_path = 'C:/Users/Administrator/Desktop/program/data/market_data/'
 file_list = os.listdir(file_path)
 columns_name = pd.read_csv(file_path+file_list[0]).columns
 
-hangqing_record = []
+market_data_record = []
 temp_record = pd.DataFrame(columns=columns_name)
 for i in range(len(file_list)):
     now_path = file_path+file_list[i]
@@ -21,16 +21,16 @@ for i in range(len(file_list)):
     if (i+1) % 50 == 0 or (i+1) == len(file_list):
         del temp_record['Unnamed: 0']
         del temp_record['Unnamed: 25']
-        hangqing_record.append(temp_record)
+        market_data_record.append(temp_record)
         temp_record = pd.DataFrame(columns=columns_name)
     print('all:%s, now:%s' % (len(file_list), i+1))
 
-for i in range(len(hangqing_record)):
+for i in range(len(market_data_record)):
     if i == 0:
-        hangqing_df = hangqing_record[0]
+        market_data_df = market_data_record[0]
     else:
-        hangqing_df = pd.concat((hangqing_df, hangqing_record[i]), axis=0)
-del hangqing_record
+        market_data_df = pd.concat((market_data_df, market_data_record[i]), axis=0)
+del market_data_record
 
 # Import multiple factors
 file_path = 'C:/Users/Administrator/Desktop/program/data/multi_factor/'
@@ -55,17 +55,17 @@ for i in range(len(file_list)):
 
 
 # Use the above results to form a database with id as a file
-unique_id = np.unique(hangqing_df['secID'].values)
+unique_id = np.unique(market_data_df['secID'].values)
 
 multi_factor_columns = multi_factor_record[0].columns
 for i in range(len(unique_id)):
     now_id = unique_id[i]
-    now_hangqing_df = hangqing_df[hangqing_df['secID'] == now_id]
+    now_market_data_df = market_data_df[market_data_df['secID'] == now_id]
     now_multi_factor_df = pd.DataFrame(columns=multi_factor_columns)
     for temp in multi_factor_record:
         now_temp = temp[temp['secID'] == now_id]
         if now_temp.shape[0] != 0:
             now_multi_factor_df = pd.concat((now_multi_factor_df, now_temp), axis=0)
-    now_df = pd.merge(now_hangqing_df, now_multi_factor_df, on=['secID', 'tradeDate'], how='left')
+    now_df = pd.merge(now_market_data_df, now_multi_factor_df, on=['secID', 'tradeDate'], how='left')
     pickle.dump(now_df, open('save/classified by id/'+now_id+'.pkl', 'wb'))
     print('all:%s, now:%s' % (len(unique_id), i+1))

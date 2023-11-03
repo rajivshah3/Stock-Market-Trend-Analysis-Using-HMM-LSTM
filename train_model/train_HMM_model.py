@@ -9,11 +9,11 @@ import os
 
 
 def train_HMM_model(n_states):
-    # train the hnagqing or the multi factor GMM_HMM model and XGB_HMM model
+    # train the market data or the multi factor GMM_HMM model and XGB_HMM model
 
-    # 1 hangqing
-    # 1.1 generate the hangqing dataset
-    if not (os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_GMM_HMM_model.pkl') and os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_XGB_HMM_model.pkl')):
+    # 1 market data
+    # 1.1 generate the market data dataset
+    if not (os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/market_data_GMM_HMM_model.pkl') and os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/market_data_XGB_HMM_model.pkl')):
         feature_col = ['preClosePrice', 'openPrice', 'closePrice', 'turnoverVol', 'highestPrice', 'lowestPrice']
         dataset, label, lengths, col_nan_record = form_raw_dataset(feature_col, label_length=5)
         solved_dataset, allow_flag = HMM_market_data.solve_on_raw_data(dataset, lengths, feature_col)
@@ -21,14 +21,14 @@ def train_HMM_model(n_states):
         X_train = solve_on_outlier(X_train, lengths_train)
 
         # 1.2 train and save the GMM_HMM model
-        print('training hangqing GMM_HMM model...')
+        print('training market data GMM_HMM model...')
         temp = GMM_HMM(X_train, lengths_train, n_states, 'diag', 1000, True)
-        pickle.dump(temp, open('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_GMM_HMM_model.pkl', 'wb'))
+        pickle.dump(temp, open('C:/Users/Administrator/Desktop/HMM_program/save/market_data_GMM_HMM_model.pkl', 'wb'))
 
         # 1.3 train and save the XGB_HMM model
-        print('training hangqing XGB_HMM model...')
+        print('training market data XGB_HMM model...')
         A, xgb_model, pi = XGB_HMM(X_train, lengths_train)
-        pickle.dump([A, xgb_model, pi], open('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_XGB_HMM_model.pkl', 'wb'))
+        pickle.dump([A, xgb_model, pi], open('C:/Users/Administrator/Desktop/HMM_program/save/market_data_XGB_HMM_model.pkl', 'wb'))
 
     # 2 multi factor
     print('training multi factor...')
