@@ -3,7 +3,7 @@ import numpy as np
 
 
 def form_model_dataset(dataset, label, allow_flag, lengths):
-    # # 根据HMM1_solve的结果，形成后面用于训练HMM模型的数据类型
+    # Based on the results of HMM1_solve, form the data type used to train the HMM model later.
     # input:
     #     dataset, HMM1_solve
     #     label, HMM1_solve

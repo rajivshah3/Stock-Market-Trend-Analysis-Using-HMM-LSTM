@@ -1,5 +1,5 @@
 """
-    将原来的数据库，变成一个stock id一个文件的数据库
+    Transform the original database into a database with one stock id and one file
 """
 
 import os
@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np 
 import pickle
 
-# 导入行情数据
+# Import market data
 file_path = 'C:/Users/Administrator/Desktop/program/data/hangqing/'
 file_list = os.listdir(file_path)
 columns_name = pd.read_csv(file_path+file_list[0]).columns
@@ -32,7 +32,7 @@ for i in range(len(hangqing_record)):
         hangqing_df = pd.concat((hangqing_df, hangqing_record[i]), axis=0)
 del hangqing_record
 
-# 导入多因子
+# Import multiple factors
 file_path = 'C:/Users/Administrator/Desktop/program/data/duoyinzi/'
 file_list = os.listdir(file_path)
 columns_name = pd.read_csv(file_path+file_list[0]).columns
@@ -54,7 +54,7 @@ for i in range(len(file_list)):
     print('all:%s, now:%s' % (len(file_list), i+1))
 
 
-# 用上面的结果形成以ID为一个文件的数据库
+# Use the above results to form a database with id as a file
 unique_id = np.unique(hangqing_df['secID'].values)
 
 duoyinzi_columns = duoyinzi_record[0].columns

@@ -2,8 +2,8 @@ import numpy as np
 
 
 def form_accuracy(X, y, model):
-    # 计算总的准确率，分别y为-1,0,1的准确率
-    # 返回总的准确率，和分别准确率
+    # Calculate the overall accuracy rate, respectively, when y is -1, 0, and 1.
+    # Returns the overall accuracy, and the respective accuracy
 
     single_record = np.zeros(3)
 

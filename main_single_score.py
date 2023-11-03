@@ -1,5 +1,5 @@
 """
-    得到一个因子一个分数的记录列表
+    Get a list of records with one factor and one score
 """
 
 import pickle

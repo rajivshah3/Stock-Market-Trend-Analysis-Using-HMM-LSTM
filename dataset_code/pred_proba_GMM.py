@@ -3,9 +3,9 @@ from public_tool.form_index import form_index
 
 
 def pred_proba_GMM(model, O, allow_flag, lengths):
-    # 对dataset形成pred_proba，注意这里的dataset是solve_on_raw_data后的结果，即附带allow_flag的数据
+    # Form pred_proba for the dataset. Note that the dataset here is the result of solve_on_raw_data, that is, the data with allow_flag.
     # output:
-    #     pred_proba：数组类型
+    #   pred_proba: array type
 
     pred_proba = np.zeros((O.shape[0], model.n_components))
 

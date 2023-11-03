@@ -10,9 +10,9 @@ def self_xgb(X, gamma, n_states):
               'min_child_weight': 3,
               'max_depth': 10,
               'subsample': 0.886,
-              'reg_alpha': 1.5,  # L1的正则系数
-              'reg_lambda': 0.5,  # L2的正则系数
-              'gamma': 0.5,  # 分裂阈值
+              'reg_alpha': 1.5,  # Regular coefficient of L1
+              'reg_lambda': 0.5,  # Regular coefficient of L2
+              'gamma': 0.5,  # split threshold
               'n_jobs': -1,
               'eval_metric': 'mlogloss',
               'scale_pos_weight': 1,

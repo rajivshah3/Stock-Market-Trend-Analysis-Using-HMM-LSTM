@@ -1,10 +1,10 @@
 def form_index(lengths, index):
     # input:
-    #     lengths
-    #     index: lengths的第几个
+    #   lengths
+    #   index: the number of lengths
     # output:
-    #     begin_index
-    #     end_index
+    #   begin_index
+    #   end_index
 
     begin_index = sum(lengths[0:index])
     end_index = begin_index + lengths[index]

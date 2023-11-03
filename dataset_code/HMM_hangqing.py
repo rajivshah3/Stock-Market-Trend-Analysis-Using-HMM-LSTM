@@ -6,14 +6,14 @@ warnings.filterwarnings("ignore")
 
 
 def solve1(dataset, lengths, feature_col):
-    # 根据dataset的样本量，形成相同样本量，排序一样的处理结果result，但是有一些是不一定能用的
-    # 所以同时返回一个记录数据是否处理过的allow_flag
+    # According to the sample size of the dataset, the same sample size and the same sorting result are formed, but some of them may not be usable.
+    # So at the same time, an allow_flag is returned that records whether the data has been processed.
     # input:
-    #     dataset, feature_col
-    #     lengths
+    #   dataset,feature_col
+    #   lengths
     # output:
-    #     result: 处理后的数据
-    #     allow_flag: 记录该数据是否可以使用
+    #   result: processed data
+    #   allow_flag: records whether the data can be used
 
     result = np.zeros((dataset.shape[0], 3))
     allow_flag = np.zeros(dataset.shape[0])
@@ -43,14 +43,14 @@ def solve1(dataset, lengths, feature_col):
 
 
 def solve2(dataset, feature_col):
-    # 根据dataset的样本量，形成相同样本量，排序一样的处理结果result，但是有一些是不一定能用的
-    # 所以同时返回一个记录数据是否处理过的allow_flag
+    # According to the sample size of the dataset, the same sample size and the same sorting result are formed, but some of them may not be usable.
+    # So at the same time, an allow_flag is returned that records whether the data has been processed.
     # input:
-    #     dataset, feature_col
-    #     lengths
+    #   dataset,feature_col
+    #   lengths
     # output:
-    #     result: 处理后的数据
-    #     allow_flag: 记录该数据是否可以使用
+    #   result: processed data
+    #   allow_flag: records whether the data can be used
 
     result = np.zeros((dataset.shape[0], 4))
     result[:, 0] = dataset[:, feature_col.index('openPrice')]/dataset[:, feature_col.index('preClosePrice')]
@@ -64,14 +64,14 @@ def solve2(dataset, feature_col):
 
 
 def solve_on_raw_data(dataset, lengths, feature_col):
-    # 根据dataset的样本量，形成相同样本量，排序一样的处理结果result，但是有一些是不一定能用的
-    # 所以同时返回一个记录数据是否处理过的allow_flag
+    # According to the sample size of the dataset, the same sample size and the same sorting result are formed, but some of them may not be usable.
+    # So at the same time, an allow_flag is returned that records whether the data has been processed.
     # input:
-    #     dataset, feature_col
-    #     lengths
+    #   dataset,feature_col
+    #   lengths
     # output:
-    #     result: 处理后的数据
-    #     allow_flag: 记录该数据是否可以使用
+    #   result: processed data
+    #   allow_flag: records whether the data can be used
 
     result1, allow_flag1 = solve1(dataset, lengths, feature_col)
     result2, allow_flag2 = solve2(dataset, feature_col)

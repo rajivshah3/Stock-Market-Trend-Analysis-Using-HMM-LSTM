@@ -4,7 +4,9 @@ import numpy as np
 
 def form_color_dict(S, label):
     """
-    指定画图的颜色，找到3个state中最代表上升的为红色，最代表下降的为绿色，中间的为蓝色
+    Specify the color of the drawing. Among the three states, the one that most
+    represents an increase is red, the one that most represents a decrease is green,
+    and the one in the middle is blue.
     input:
         state_index, indicate the index of the state
         S, array, (n_samples, ), the state sequence

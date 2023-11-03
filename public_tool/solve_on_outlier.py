@@ -13,7 +13,7 @@ def solve_on_outlier(dataset, lengths):
         dataset, array
     """
 
-    n = 3     # 如果是比均值相差了n个单位的标准差，那么判断为outlier
+    n = 3     # If it is n units of standard deviation away from the mean, it is judged to be outlier.
     result = np.zeros(dataset.shape)
     for i in range(len(lengths)):
         begin_index, end_index = form_index(lengths, i)
