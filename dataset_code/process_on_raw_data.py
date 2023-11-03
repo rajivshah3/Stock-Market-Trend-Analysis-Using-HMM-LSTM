@@ -31,7 +31,7 @@ def form_file_path_by_intID(intID):
         return file_path
 
 
-def df_col_quchong(df):
+def df_col_remove_duplicates(df):
     # input:
     #   df, dataframe
     # output:
@@ -97,7 +97,7 @@ def replace_vol_0_to_1(df):
     return df
 
 
-def fenge_by_isOpen(df, N=50):
+def group_by_isOpen(df, N=50):
     # input:
     #   df, df in normal format
     #   N, ensure that the length of the divided df is greater than N
@@ -240,7 +240,7 @@ def form_feature_name(threshold=0.1):
     
     temp = os.listdir('save/classified by id')
     temp = pickle.load(open('save/classified by id/'+temp[0], 'rb'))
-    temp = df_col_quchong(temp)
+    temp = df_col_remove_duplicates(temp)
     
     feature_col = [i for i in temp.columns]
     feature_col.remove('secID')
@@ -370,11 +370,11 @@ def form_raw_dataset(feature_col, label_length, intID_select_list=None, verbose=
         
         now_df = pickle.load(open(now_file_path, 'rb'))
         
-        now_df = df_col_quchong(now_df)
+        now_df = df_col_remove_duplicates(now_df)
         now_df = replace_price_0_to_nan(now_df)
         now_df = replace_vol_0_to_1(now_df)
         
-        now_df_record = fenge_by_isOpen(now_df)
+        now_df_record = group_by_isOpen(now_df)
         
         for j in range(len(now_df_record)):
             now_df1 = now_df_record[j].copy()

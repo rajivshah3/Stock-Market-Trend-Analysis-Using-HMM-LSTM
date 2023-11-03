@@ -4,7 +4,7 @@
 
 import pickle
 import numpy as np
-from dataset_code.process_on_raw_data import form_raw_dataset, df_col_quchong
+from dataset_code.process_on_raw_data import form_raw_dataset, df_col_remove_duplicates
 from dataset_code.HMM_multi_factor import solve2, form_model_dataset, form_model
 from public_tool.evaluate_plot import evaluate_plot
 import warnings
@@ -13,7 +13,7 @@ warnings.filterwarnings("ignore")
 if __name__ == '__main__':
     
     temp = pickle.load(open('save/classified by id/000001.XSHE.pkl', 'rb'))
-    temp = df_col_quchong(temp)
+    temp = df_col_remove_duplicates(temp)
     temp = [i for i in temp.columns]
     feature_list = temp[temp.index('AccountsPayablesTDays'):]
     score_record = np.zeros(len(feature_list))
