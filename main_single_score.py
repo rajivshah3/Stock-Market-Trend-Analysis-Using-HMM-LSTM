@@ -39,6 +39,6 @@ if __name__ == '__main__':
 
         print('all:%s, now:%s, ' % (len(feature_list), i + 1) + now_feature[0] + ': score:%s' % score)
 
-        pickle.dump([score_record, feature_list], open('save/duoyinzi_solve2_score.pkl', 'wb'))
+        pickle.dump([score_record, feature_list], open('save/multi_factor_solve2_score.pkl', 'wb'))
 
-    pickle.dump([score_record, feature_list], open('save/duoyinzi_solve2_score.pkl', 'wb'))
+    pickle.dump([score_record, feature_list], open('save/multi_factor_solve2_score.pkl', 'wb'))

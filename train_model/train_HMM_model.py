@@ -9,7 +9,7 @@ import os
 
 
 def train_HMM_model(n_states):
-    # train the hnagqing or the duoyinzi GMM_HMM model and XGB_HMM model
+    # train the hnagqing or the multi factor GMM_HMM model and XGB_HMM model
 
     # 1 hangqing
     # 1.1 generate the hangqing dataset
@@ -30,16 +30,16 @@ def train_HMM_model(n_states):
         A, xgb_model, pi = XGB_HMM(X_train, lengths_train)
         pickle.dump([A, xgb_model, pi], open('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_XGB_HMM_model.pkl', 'wb'))
 
-    # 2 duoyinzi
-    print('training duoyinzi...')
-    if not (os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/duoyinzi_GMM_HMM_model.pkl') and os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/duoyinzi_XGB_HMM_model.pkl')):
-        score, feature_name = HMM_multi_factor.load_duoyinzi_single_score()
-        feature_col_duoyinzi = HMM_multi_factor.type_filter(score, feature_name, 0.1)  # there are 7 kinds of duoyinzi
+    # 2 multi factor
+    print('training multi factor...')
+    if not (os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/multi_factor_GMM_HMM_model.pkl') and os.path.exists('C:/Users/Administrator/Desktop/HMM_program/save/multi_factor_XGB_HMM_model.pkl')):
+        score, feature_name = HMM_multi_factor.load_multi_factor_single_score()
+        feature_col_multi_factor = HMM_multi_factor.type_filter(score, feature_name, 0.1)  # there are 7 kinds of multi factor
         GMM_model_list = []
         XGB_model_list = []
-        for i in range(len(feature_col_duoyinzi)):
-            feature_col = feature_col_duoyinzi[i]
-            # 2.1 generate the duoyinzi dataset
+        for i in range(len(feature_col_multi_factor)):
+            feature_col = feature_col_multi_factor[i]
+            # 2.1 generate the multi factor dataset
             dataset, label, lengths, col_nan_record = form_raw_dataset(feature_col, label_length=5)
             print(sum(lengths))
             print(dataset.shape[0])
@@ -49,7 +49,7 @@ def train_HMM_model(n_states):
             X_train = solve_on_outlier(X_train, lengths_train)
 
             # 2.2 train and record the GMM_HMM model
-            print('training duoyinzi GMM_HMM model %s...' % (i+1))
+            print('training multi factor GMM_HMM model %s...' % (i+1))
             pickle.dump([X_train, lengths_train], open('C:/Users/Administrator/Desktop/HMM_program/save/temp1.pkl', 'wb'))
             print(X_train.shape[0])
             print(sum(lengths_train))
@@ -57,10 +57,10 @@ def train_HMM_model(n_states):
             GMM_model_list.append(temp)
 
             # 2.3 train and record the XGB_HMM model
-            print('training duoyinzi XGB_HMM model %s...' % (i+1))
+            print('training multi factor XGB_HMM model %s...' % (i+1))
             A, xgb_model, pi = XGB_HMM(X_train, lengths_train)
             XGB_model_list.append([A, xgb_model, pi])
 
         # 2.4 save the model
-        pickle.dump(GMM_model_list, open('C:/Users/Administrator/Desktop/HMM_program/save/duoyinzi_GMM_HMM_model.pkl', 'wb'))
-        pickle.dump(XGB_model_list, open('C:/Users/Administrator/Desktop/HMM_program/save/duoyinzi_XGB_HMM_model.pkl', 'wb'))
+        pickle.dump(GMM_model_list, open('C:/Users/Administrator/Desktop/HMM_program/save/multi_factor_GMM_HMM_model.pkl', 'wb'))
+        pickle.dump(XGB_model_list, open('C:/Users/Administrator/Desktop/HMM_program/save/multi_factor_XGB_HMM_model.pkl', 'wb'))

@@ -13,10 +13,10 @@ def train_LSTM_model():
     # generate the dataset
 
     feature_col_hangqing = ['preClosePrice', 'openPrice', 'closePrice', 'turnoverVol', 'highestPrice', 'lowestPrice']
-    score, feature_name = HMM_multi_factor.load_duoyinzi_single_score()
-    feature_col_duoyinzi = HMM_multi_factor.type_filter(score, feature_name, 0.1)
+    score, feature_name = HMM_multi_factor.load_multi_factor_single_score()
+    feature_col_multi_factor = HMM_multi_factor.type_filter(score, feature_name, 0.1)
     feature_col = feature_col_hangqing
-    _ = [[feature_col.append(j) for j in i] for i in feature_col_duoyinzi]
+    _ = [[feature_col.append(j) for j in i] for i in feature_col_multi_factor]
     dataset, label, lengths, col_nan_record = form_raw_dataset(feature_col, 5)
 
     # 1 by GMM_HMM
@@ -25,12 +25,12 @@ def train_LSTM_model():
     model = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/hangqing_GMM_HMM_model.pkl', 'rb'))
     pred_proba1 = pred_proba_GMM(model, solved_dataset1, allow_flag1, lengths)
 
-    # 1.2 duoyinzi
+    # 1.2 multi factor
     pred_proba2 = []
     allow_flag2 = []
-    model = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/duoyinzi_GMM_HMM_model.pkl', 'rb'))
-    for i in range(len(feature_col_duoyinzi)):
-        temp_solved_dataset, temp_allow_flag = HMM_multi_factor.solve_on_raw_data(dataset, lengths, feature_col, feature_col_duoyinzi[i])
+    model = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/multi_factor_GMM_HMM_model.pkl', 'rb'))
+    for i in range(len(feature_col_multi_factor)):
+        temp_solved_dataset, temp_allow_flag = HMM_multi_factor.solve_on_raw_data(dataset, lengths, feature_col, feature_col_multi_factor[i])
         temp_model = model[i]
         temp_pred_proba = pred_proba_GMM(temp_model, temp_solved_dataset, temp_allow_flag, lengths)
         pred_proba2.append(temp_pred_proba)
@@ -49,12 +49,12 @@ def train_LSTM_model():
     A, model, pi = temp[0], temp[1], temp[2]
     pred_proba1 = pred_proba_XGB(A, model, pi, solved_dataset1, allow_flag1, lengths)
 
-    # 2.2 duoyinzi
+    # 2.2 multi factor
     pred_proba2 = []
     allow_flag2 = []
-    model = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/duoyinzi_XGB_HMM_model.pkl', 'rb'))
-    for i in range(len(feature_col_duoyinzi)):
-        temp_solved_dataset, temp_allow_flag = HMM_multi_factor.solve_on_raw_data(dataset, lengths, feature_col, feature_col_duoyinzi[i])
+    model = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/multi_factor_XGB_HMM_model.pkl', 'rb'))
+    for i in range(len(feature_col_multi_factor)):
+        temp_solved_dataset, temp_allow_flag = HMM_multi_factor.solve_on_raw_data(dataset, lengths, feature_col, feature_col_multi_factor[i])
         temp_A, temp_model, temp_pi = model[i][0], model[i][1], model[i][2]
         temp_pred_proba = pred_proba_XGB(temp_A, temp_model, temp_pi, temp_solved_dataset, temp_allow_flag, lengths)
         pred_proba2.append(temp_pred_proba)

@@ -10,10 +10,10 @@ from public_tool.form_index import form_index
 from public_tool.form_model_dataset import form_model_dataset
 
 
-def load_duoyinzi_single_score():
+def load_multi_factor_single_score():
     # Return score, feature_name
 
-    temp = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/duoyinzi_solve1_score.pkl', 'rb'))
+    temp = pickle.load(open('C:/Users/Administrator/Desktop/HMM_program/save/multi_factor_solve1_score.pkl', 'rb'))
     return temp[0], temp[1]
 
 
@@ -162,7 +162,7 @@ def form_model(X, lengths, n, v_type, n_iter, verbose=True):
 
 if __name__ == '__main__':
     
-    score, feature_name = load_duoyinzi_single_score()
+    score, feature_name = load_multi_factor_single_score()
     list_by_diff_type = type_filter(score, feature_name, 0.1)
     model_list = []
     
@@ -184,4 +184,4 @@ if __name__ == '__main__':
         model = form_model(X_train, lengths_train, 6, 'diag', 1000)
         model_list.append(model)
         
-    pickle.dump(model_list, open('save/HMM_duoyinzi_model_list.pkl', 'wb'))
+    pickle.dump(model_list, open('save/HMM_multi_factor_model_list.pkl', 'wb'))

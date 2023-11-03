@@ -18,7 +18,7 @@ def combine(X1, X2, allow_flag1, allow_flag2, label, lengths):
     #   result_lengths: new lengths
 
     if not (type(X1) == type(allow_flag1) or type(X2) == type(allow_flag2)):
-        sys.exit('x 和 allow_flag的输入格式不一致')
+        sys.exit('The input formats of x and allow_flag are inconsistent')
 
     list_flag1 = type(X1) == list
     list_flag2 = type(X2) == list
